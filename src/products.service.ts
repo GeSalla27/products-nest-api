@@ -7,7 +7,7 @@ export class ProductsService {
     constructor(
         @InjectModel(Product)
         private productModel: typeof Product
-    ) { }
+    ) {}
 
     async getAll(): Promise<Array<Product>> {
         return this.productModel.findAll();
@@ -21,9 +21,9 @@ export class ProductsService {
         this.productModel.create(product);
     }
 
-    async update(product: Product): Promise<[number, Product[]]> {
+    async update(id: number, product: Product): Promise<[number, Product[]]> {
         return this.productModel.update(product, {
-            where: { id: product.id }
+            where: { id: id },
         });
     }
 
